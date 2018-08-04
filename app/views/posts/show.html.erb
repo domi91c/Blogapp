@@ -1,0 +1,29 @@
+<!-- Page Header -->
+<header class="masthead"><!-- Vielleicht kann ich hier ein Bild reincrawlen lassen? als jeweiliges Headerbild vom Beitrag bzw. Bilder aus dem Beitrag--></header>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1>Singleview</h1>
+
+      <h2><%= @post.title %></h2>
+
+      <p><%= @post.content %></p>
+      <!-- app/views/posts/show.html.erb -->
+      <% if @post.image.attached? %>
+        <!-- @post.image.present? will always return true, use attached? to check presence -->
+        <p>
+          <strong>Image:</strong>
+          <br>
+          <%= image_tag @post.image %>
+        </p>
+      <% end %>
+      <% if user_signed_in? %>
+        <p><%= link_to "editieren", edit_post_path(@post) %>
+          | <%= link_to "löschen", @post, :data => {:confirm => "Wirkllich löschen?"}, :method => :delete %></p>
+      <% end %>
+      <small><%= @post.created_at %></small>
+    </div>
+  </div>
+</div>

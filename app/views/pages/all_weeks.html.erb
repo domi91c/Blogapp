@@ -1,0 +1,47 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('img/post-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>Das hier wird sehr experimentell und am besten man sieht hier nochmal alle Posts, oder vielleicht alle Bilder mit Downloadfunktion</h1>
+          <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+          <span class="meta">Posted by
+                <a href="#">Start Bootstrap</a>
+                on August 24, 2018</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <% @posts.each do |post| %>
+        <div class="post-preview">
+          <h2 class="post-title"><%= link_to post.title, post %> </h2>
+          <h3 class="post-subtitle"><%= post.content.html_safe %></h3>
+          <% if user_signed_in? %>
+            <p><%= link_to "editieren", edit_post_path(post) %>
+              | <%= link_to "löschen", post, :data => {:confirm => "Wirkllich löschen?"}, :method => :delete %></p>
+            <% end %>
+        </div>
+      <% end %>
+      <!-- Trying to get an Image Gallery to work
+      <div class="container">
+        <div class="img-responsive">
+          <#%= image_tag painting.image_url(:thumb) if painting.image? %>
+        </div>
+      </div>
+      <!-- Pager -->
+      <ul class="pager">
+
+        <%= will_paginate @posts %>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>

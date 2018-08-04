@@ -1,0 +1,39 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url(<%= asset_path 'index_header.jpg' %>)">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Sebastian abroad!</h1>
+          <span class="subheading">Meine Zeit am German Historical Institute in Washington D.C.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <% @posts.each do |post| %>
+        <div class="post-preview">
+          <h2 class="post-title"><%= link_to post.title, post %> </h2>
+          <h3 class="post-subtitle"><%= post.content %></h3> <!-- html_safe method call to take the raw html -->
+          <% if user_signed_in? %>
+            <p><%= link_to "editieren", edit_post_path(post) %>
+          | <%= link_to "löschen", post, :data => {:confirm => "Wirkllich löschen?"}, :method => :delete %></p>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+<p><%= link_to "Neuen Beitrag erstellen" , new_post_path %></p>
+<% end %>
+
+

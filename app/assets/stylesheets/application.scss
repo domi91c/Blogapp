@@ -1,0 +1,102 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ @import trix
+ */
+
+
+.reg-content {
+    padding-top: 3em;
+}
+
+#gallery img{
+    width: 100%;
+}
+
+.photo {
+    text-align: center;
+    position: relative;
+}
+
+.photo,
+.photo-hover,
+.photo-hover .mask,
+.photo-img,
+.photo-info{
+    width: 285px;
+    height:220px;
+}
+
+.photo-image,
+.photo-hover,
+.photo-hover .mask{
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.photo-type-line .photo-hover{
+    z-index: 100;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    opacity:0;
+    cursor: pointer;
+    display:block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.photo-type-line .photo-info{
+    z-index: 10;
+    color:#fff;
+    display:table-cell;
+    vertical-align: middle;
+    position: relative;
+
+}
+
+.photo-type-line .photo-info .headline {
+    font-size:20px;
+}
+
+.photo-type-line .photo-info .line {
+    height: 1px;
+    width: 0%;
+    margin: 15px auto;
+    background: #fff;
+    -webkit-transition: all 500ms ease-out;
+    -moz-transition: all 500ms ease-out;
+    transition: all 500ms ease-out;
+}
+
+.photo-type-line .photo-hover .mask{
+    background: #000000;
+    filter:alpha(opacity=50);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.photo-type-line .photo-hover:hover .line {
+    width: 40%;
+}
+
+.photo-type-line .photo-hover:hover{
+    opacity: 1;
+}
+
+.photo-img{
+    background: #7a548f;
+    z-index: 0;
+}
